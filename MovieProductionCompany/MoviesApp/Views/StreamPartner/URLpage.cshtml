@@ -1,0 +1,18 @@
+﻿@model URLViewModel
+
+@{
+    ViewData["Title"] = "Add a New Streaming Partner";
+}
+<form asp-controller="StreamPartner" asp-action="AddNewURL" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="ActiveUrl.NewPartnerURL">URL to recieve notifications for new movies:</label>
+        <input type="text" class="form-control" id="url"  asp-for="ActiveUrl.NewPartnerURL" placeholder="Enter New Partner URL" value="https://localhost:7083/api/Notification">
+
+        <label asp-for="ActiveUrl.ChallengeURL">URL to recieve challenge Url for new movies:</label>
+        <input type="text" class="form-control" asp-for="ActiveUrl.ChallengeURL" id="chalng"  placeholder="Enter Challenge URL" >
+        <input type="hidden" asp-for="ActiveUrl.APIkey" value="wedx" />
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+    <a asp-controller="Home" asp-action="index" class="btn btn-primary">Cancel</a>
+</form>

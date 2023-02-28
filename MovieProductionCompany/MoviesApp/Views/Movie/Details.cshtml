@@ -1,0 +1,72 @@
+﻿@model MovieDetailViewModel
+
+@{
+    ViewData["Title"] = Model.ActiveMovie.Name;
+}
+
+<div class="row">
+    <p><em>@Model.ActiveMovie.Name</em> is a <a asp-controller="Movie" asp-action="GetMoviesByGenreId"
+                     asp-route-genreId="@Model.ActiveMovie.GenreId">
+                     @Model.ActiveMovie.Genre.Name</a> that debuted in @(Model.ActiveMovie.Year).</p>
+</div>
+<div class="row">
+    <div class="col-sm-9">
+        <h6>Reviews (Average rating: @Model.AverageRating.ToString("0.0"))</h6>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Rating</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var review in Model.ActiveMovie.Reviews)
+                {
+                    <tr>
+                        <td>@review.Rating</td>
+                        <td>@review.Comments</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-3">
+        <h6>Actors:</h6>
+        <ul>
+            @foreach (Casting casting in Model.ActiveMovie.Castings)
+            {
+                <li><a href="#">@casting.Actor.FullName</a></li>
+            }
+        </ul>
+    </div>
+</div>
+<div>
+    <h6>Add a new review:</h6>
+
+    <div class="text-danger" asp-validation-summary="All"></div>
+
+    <form class="row g-3"
+          asp-controller="Movie" asp-action="AddReviewToMovieById"
+          asp-route-id="@Model.ActiveMovie.MovieId" method="post"
+          enctype="application/x-www-form-urlencoded">
+        <div class="col-sm-2">
+            <label class="visually-hidden" asp-for="NewReview.Rating">Rating</label>
+            <div class="input-group">
+                <div class="input-group-text">Rating</div>
+                <input type="text" class="form-control" asp-for="NewReview.Rating" />
+            </div>
+        </div>
+
+        <div class="col-sm-8">
+            <label class="visually-hidden" asp-for="NewReview.Comments">Comments</label>
+            <div class="input-group">
+                <div class="input-group-text">Comments</div>
+                <input type="text" class="form-control" asp-for="NewReview.Comments" />
+            </div>
+        </div>
+
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary">Add review</button>
+        </div>
+    </form>
+</div>
