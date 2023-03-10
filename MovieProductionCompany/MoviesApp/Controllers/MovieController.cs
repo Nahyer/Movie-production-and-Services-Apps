@@ -68,6 +68,7 @@ namespace MoviesApp.Controllers
                 // it's valid so we want to add the new movie to the DB:
                 _movieDbContext.Movies.Add(movieViewModel.ActiveMovie);
                 _movieDbContext.SaveChanges();
+
                 var payload = new Movie 
                     {
                    Name = movieViewModel.ActiveMovie.Name,
@@ -75,9 +76,11 @@ namespace MoviesApp.Controllers
                    GenreId = movieViewModel.ActiveMovie.GenreId,
                    
                     };
+                 
                 List<string> uri = await _movieDbContext.StreamingPartners
                .Select(b => b.NewPartnerURL)
                .ToListAsync();
+
                 foreach (string ur in uri)
                 { Console.WriteLine(ur); }
 
@@ -160,7 +163,7 @@ namespace MoviesApp.Controllers
         public IActionResult ProcessEditRequest(MovieViewModel movieViewModel)
         {
             if (ModelState.IsValid)
-            {
+            { 
                 // it's valid so we want to update the existing movie in the DB:
                 _movieDbContext.Movies.Update(movieViewModel.ActiveMovie);
                 _movieDbContext.SaveChanges();

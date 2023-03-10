@@ -10,8 +10,8 @@
         <input type="text" class="form-control" id="url"  asp-for="ActiveUrl.NewPartnerURL" placeholder="Enter New Partner URL" value="https://localhost:7083/api/Notification">
 
         <label asp-for="ActiveUrl.ChallengeURL">URL to recieve challenge Url for new movies:</label>
-        <input type="text" class="form-control" asp-for="ActiveUrl.ChallengeURL" id="chalng"  placeholder="Enter Challenge URL" >
-        <input type="hidden" asp-for="ActiveUrl.APIkey" value="wedx" />
+        <input type="text" class="form-control" asp-for="ActiveUrl.ChallengeURL" id="chalng"  placeholder="Enter Challenge URL" value="https://localhost:7083/api/Challenge" >
+        <input type="hidden" asp-for="ActiveUrl.VerificationStatus" value="NOT VERIFIED ">
     </div>
     <button type="submit" class="btn btn-primary">Register</button>
     <a asp-controller="Home" asp-action="index" class="btn btn-primary">Cancel</a>

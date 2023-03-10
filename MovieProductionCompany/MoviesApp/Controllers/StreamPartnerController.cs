@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MoviesApp.Entities;
 using MoviesApp.Models;
+using System.Runtime.InteropServices;
 
 namespace MoviesApp.Controllers
 {
@@ -13,38 +15,64 @@ namespace MoviesApp.Controllers
             _movieDbContext = movieDbContext;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAddURLRequestAsync()
+        [HttpGet("/add/partner")]
+        public IActionResult GetAddURLRequest()
         {
-         
-              return View("URLpage");
+            GenerateSecret();
+
+            URLViewModel uRLViewModel = new URLViewModel()
+            {
+                ActiveUrl = new StreamingPartner()
+            };
+          
+            //var partner = _movieDbContext.StreamingPartners.Find(id);
+            return View("URLpage", uRLViewModel);
         }
 
         [HttpPost]
-        public IActionResult AddNewURL( URLViewModel uRLViewModel)
+        public IActionResult AddNewURL(URLViewModel uRLViewModel)
         {
             
-                var newMovie = new StreamingPartner()
-                {
-                    NewPartnerURL = uRLViewModel.ActiveUrl.NewPartnerURL,
-                    ChallengeURL = uRLViewModel.ActiveUrl.ChallengeURL,
-                    APIkey = uRLViewModel.ActiveUrl.APIkey
+            _movieDbContext.StreamingPartners.Add(uRLViewModel.ActiveUrl);
+            _movieDbContext.SaveChanges();
 
-                };
-
-                _movieDbContext.StreamingPartners.Add(newMovie);
-                _movieDbContext.SaveChanges();
 
                 TempData["LastActionMessage"] = $"A PartnerID \"{uRLViewModel.ActiveUrl.EndpointId}\" was added.";
-
-                return RedirectToAction("GetAllMovies", "Movie"); 
+            Console.WriteLine(uRLViewModel.ActiveUrl.EndpointId);
+            int id = uRLViewModel.ActiveUrl.EndpointId;
+            return RedirectToAction("Partner", new {Id = id});
             
         }
-        public IActionResult partnerReg()
+        [HttpGet]
+        public IActionResult Partner(int Id)
         {
-            return View("URLpage");
+            Console.WriteLine(Id);
+            //var Notification = _movieDbContext.StreamingPartners.Find(Id);
+            //Challenge = _movieDbContext.StreamingPartners.FirstOrDefault().ChallengeURL;
+
+            //ViewData["Notification"] = Notification;
+            //ViewData["Challenge"] = Challenge;
+            ViewData["bag"] = HexString;
+            Console.WriteLine(HexString);
+            URLViewModel URLModel = new URLViewModel()
+            {
+                ActiveUrl = _movieDbContext.StreamingPartners.Find(Id)
+            };
+
+            return View("Partner", URLModel);
+        }
+        public IActionResult GenerateSecret()
+        {
+            Guid guid = Guid.NewGuid();
+             HexString = guid.ToString("D");
+            ViewBag.HexString = HexString;
+            Console.WriteLine(HexString);
+            return Ok();
         }
 
+       
+        public static string HexString;
+        public static string Challenge;
         
     }
 }

@@ -19,22 +19,22 @@ namespace MoviesApp.Entities
         public DbSet<Movie> Movies { get; set; }
 
         public DbSet<Genre> Genres { get; set; }
+               
+        public DbSet<StreamingPartner> StreamingPartners { get; set; }
 
         public DbSet<Actor> Actors { get; set; }
 
         public DbSet<Casting> Castings { get; set; }
-                            
-        public DbSet<StreamingPartner> StreamingPartners { get; set; }
+        public IEnumerable<object> StreamingPartner { get; internal set; }
 
 
         // override the protected OnModelCreating method to seed the DB w some movies
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasPostgresExtension("uuid-ossp");
+                   
+           modelBuilder.Entity<StreamingPartner>().HasKey(s => s.EndpointId);
             // setup the composite key in Castings:
             modelBuilder.Entity<Casting>().HasKey(c => new { c.ActorId, c.MovieId });
-
-            modelBuilder.Entity<StreamingPartner>().HasKey(c => new { c.EndpointId });
 
 			// setup 1-to-many between movie & casting:
 			modelBuilder.Entity<Casting>().HasOne(c => c.Movie).WithMany(m => m.Castings).HasForeignKey(c => c.MovieId);
@@ -42,6 +42,7 @@ namespace MoviesApp.Entities
             // setup 1-to-many between actor & casting:
             modelBuilder.Entity<Casting>().HasOne(c => c.Actor).WithMany(m => m.Castings).HasForeignKey(c => c.ActorId);
 
+         
             modelBuilder.Entity<Genre>().HasData(
                 new Genre() { GenreId = "A", Name = "Action" },
                 new Genre() { GenreId = "C", Name = "Comedy" },
@@ -51,7 +52,7 @@ namespace MoviesApp.Entities
                 new Genre() { GenreId = "R", Name = "RomCom" },
                 new Genre() { GenreId = "S", Name = "SciFi" }
             );
-           
+             
             // seed some actors:
             modelBuilder.Entity<Actor>().HasData(
                 new Actor() { ActorId = 1, FirstName = "Humphrey", LastName = "Bogart" },
@@ -141,6 +142,17 @@ namespace MoviesApp.Entities
                 new Casting() { MovieId = 3, ActorId = 5, Role = "Vincet Vega" },
                 new Casting() { MovieId = 3, ActorId = 6, Role = "Mia Wallace" }
             );
+
+            //seed some streming partners:
+            modelBuilder.Entity<StreamingPartner>().HasData(
+                new StreamingPartner()
+                {
+                    EndpointId = 1,
+                    NewPartnerURL = "https://localhost:7083/api/Notification",
+                    ChallengeURL = "https://localhost:7083/api/Challenge",
+                    VerificationStatus = "NOT VERIFIED"
+                });
+
         }
 
     }

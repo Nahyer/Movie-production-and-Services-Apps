@@ -1,0 +1,23 @@
+﻿@model URLViewModel
+
+@{
+    ViewData["Title"] = "Streaming Partner Details";
+}
+<p>
+        <a asp-controller="Home" asp-action="Index" asp-route-id="">Home</a>
+        <span class="mx-1">|</span>
+        <a asp-controller="Movie" asp-action="GetAllMovies" asp-route-id="">Movies</a>
+        <span class="mx-1">|</span>
+        <a asp-controller="StreamPartner" asp-action="GetAddURLRequest" asp-route-id="">Add a new Streaming partner</a>
+
+</p>
+    <p><b>API Key:</b><i>@ViewData["bag"]</i></p>
+    <p><b>New movie Notification URL: </b><i>@Model.ActiveUrl.NewPartnerURL</i></p>
+    <p><b>Challenge verification URL: </b><i>@Model.ActiveUrl.ChallengeURL</i></p>
+    <p><b>Verification Status: </b><i>@Model.ActiveUrl.VerificationStatus</i></p>
+@if(Model.ActiveUrl.VerificationStatus != "VERIFIED"){    
+<form method="post" asp-action="SendVerification" asp-controller="Challenge" asp-route-id="@Model.ActiveUrl.EndpointId">
+
+    <button type="submit" >Verify</button>
+</form>
+}
