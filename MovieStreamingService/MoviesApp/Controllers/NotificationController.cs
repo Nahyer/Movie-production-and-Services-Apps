@@ -24,7 +24,8 @@ namespace MoviesApp.Controllers
                 Year = payload.Year,
                 GenreId = payload.GenreId,
                 Rating = 0,
-                ProductionStudioId = 2 ,
+                ProductionStudioId = 2,
+                StreamId = false
             };
                        
             _movieDbContext.Movies.Add(NewMovie);
@@ -32,9 +33,6 @@ namespace MoviesApp.Controllers
             return Ok();
 
         }
-
-
-
 
         private MovieDbContext _movieDbContext;
 		public NotificationController(MovieDbContext movieDbContext)

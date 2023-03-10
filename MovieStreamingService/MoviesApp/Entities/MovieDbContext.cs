@@ -19,11 +19,17 @@ namespace MoviesApp.Entities
 
         public DbSet<ProductionStudio> Studios { get; set; }
         
-       // public DbSet<WebhookData> EventName { get; set; }
+        public DbSet<Stream> Streams { get; set; }
 
         // override the protected OnModelCreating method to seed the DB w some movies
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+         
+            //data for the Stream table
+            modelBuilder.Entity<Stream>().HasData(
+                new Stream() { StreamId = true, StreamingStatus = "ActivelyStreaming" },
+                new Stream() { StreamId = false, StreamingStatus = "Not Streaming" }
+             );
             modelBuilder.Entity<Genre>().HasData(
                 new Genre() { GenreId = "A", Name = "Action" },
                 new Genre() { GenreId = "C", Name = "Comedy" },
@@ -48,7 +54,9 @@ namespace MoviesApp.Entities
                     Year = 1942,
                     Rating = 5,
                     GenreId = "D",
-                    ProductionStudioId = 1
+                    ProductionStudioId = 1,
+                    StreamId = true
+
                 },
                 new Movie() {
                     MovieId = 2,
@@ -56,7 +64,9 @@ namespace MoviesApp.Entities
                     Year = 1979,
                     Rating = 4,
                     GenreId = "A",
-                    ProductionStudioId = 4
+                    ProductionStudioId = 4,
+                    StreamId = true
+
                 },
                 new Movie() {
                     MovieId = 3,
@@ -64,9 +74,11 @@ namespace MoviesApp.Entities
                     Year = 1977,
                     Rating = 5,
                     GenreId = "C",
-                    ProductionStudioId = 3
+                    ProductionStudioId = 3,
+                    StreamId = true
                 }
             );
+
         }
     }
 }

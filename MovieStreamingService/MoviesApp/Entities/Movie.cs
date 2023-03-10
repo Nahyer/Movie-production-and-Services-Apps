@@ -32,5 +32,9 @@ namespace MoviesApp.Entities
          
         public ProductionStudio? ProductionStudio { get; set; }
 
+        public bool? StreamId { get; set; }
+        public Stream? Stream { get; set; }
+
+
     }
 }

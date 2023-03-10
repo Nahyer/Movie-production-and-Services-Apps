@@ -13,6 +13,7 @@
             <th>Rating</th>
             <th>Genre</th>
             <th>Production Studio</th>
+            <th>Steaming Status</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -25,10 +26,19 @@
                 <td>@movie.Rating</td>
                 <td>@movie.Genre?.Name</td>
                 <td>@movie.ProductionStudio?.Name</td>
+                <td>@movie.Stream?.StreamingStatus</td>
                 <td>
                     <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId">Edit</a>
                     <span class="mx-1">|</span>
                     <a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.MovieId">Delete</a>
+                         
+                    @if (!movie.Stream.StreamId){
+                                        <span class="mx-1">|</span>
+                        
+                       <form method="post" asp-controller="Rights" asp-action="GetRights" asp-route-id="@movie.MovieId">
+                                <input type="submit" class="btn btn-link" value="Request Streaming Rights" />
+                             </form>
+                    }
                 </td>
             </tr>
         }

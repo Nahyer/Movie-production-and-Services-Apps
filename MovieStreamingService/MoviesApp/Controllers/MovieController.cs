@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 using MoviesApp.Entities;
 using MoviesApp.Models;
+using System.Text;
 
 namespace MoviesApp.Controllers
 {
@@ -19,6 +20,7 @@ namespace MoviesApp.Controllers
             var allMovies = _movieDbContext.Movies
                     .Include(m => m.Genre).
                     Include(m => m.ProductionStudio)
+                    .Include(m => m.Stream)
                     .OrderBy(m => m.Name).ToList();
 
             return View(allMovies);
@@ -105,6 +107,8 @@ namespace MoviesApp.Controllers
             _movieDbContext.SaveChanges();
             return RedirectToAction("List", "Movie");
         }
+        //send request
+       
 
         private MovieDbContext _movieDbContext;
     }
