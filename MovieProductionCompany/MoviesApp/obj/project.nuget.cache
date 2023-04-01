@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Qb0NM0ZgSIeFiqbMsf2Shl+nPuuVQsRI1QVyJnwSPlRCpCFLRll0sn9NcTubu/LsaoSRmnwK8SsEZ+WVp33XmA==",
+  "dgSpecHash": "kecCw3e1f8lLi4W97CwAj/PLnGrNPm+j9xaj58jXLRqzGV2X6bS8Iebr+tsQAhIhe7JcQ+t3sDxS97Nh9NlDMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\REYHAN\\C# PROJECTS\\Project 1\\Intergrated WEB APPS with Webhooks\\SOLUTION2\\SOLUTION\\MovieProductionCompany\\MoviesApp\\MoviesApp.csproj",
+  "projectFilePath": "C:\\Users\\REYHAN\\C# PROJECTS\\Project 2\\Intergrated-ASP.NET-MVC-Core-WEB-APPS-\\MovieProductionCompany\\MoviesApp\\MoviesApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\REYHAN\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\REYHAN\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

@@ -12208,11 +12208,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\REYHAN\\C# PROJECTS\\Project 1\\Intergrated WEB APPS with Webhooks\\SOLUTION2\\SOLUTION\\MovieProductionCompany\\MoviesApp\\MoviesApp.csproj",
+      "projectUniqueName": "C:\\Users\\REYHAN\\C# PROJECTS\\Project 2\\Intergrated-ASP.NET-MVC-Core-WEB-APPS-\\MovieProductionCompany\\MoviesApp\\MoviesApp.csproj",
       "projectName": "MoviesApp",
-      "projectPath": "C:\\Users\\REYHAN\\C# PROJECTS\\Project 1\\Intergrated WEB APPS with Webhooks\\SOLUTION2\\SOLUTION\\MovieProductionCompany\\MoviesApp\\MoviesApp.csproj",
+      "projectPath": "C:\\Users\\REYHAN\\C# PROJECTS\\Project 2\\Intergrated-ASP.NET-MVC-Core-WEB-APPS-\\MovieProductionCompany\\MoviesApp\\MoviesApp.csproj",
       "packagesPath": "C:\\Users\\REYHAN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\REYHAN\\C# PROJECTS\\Project 1\\Intergrated WEB APPS with Webhooks\\SOLUTION2\\SOLUTION\\MovieProductionCompany\\MoviesApp\\obj\\",
+      "outputPath": "C:\\Users\\REYHAN\\C# PROJECTS\\Project 2\\Intergrated-ASP.NET-MVC-Core-WEB-APPS-\\MovieProductionCompany\\MoviesApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -12298,7 +12298,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   },
