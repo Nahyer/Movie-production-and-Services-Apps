@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lHCEi4bMk98ZJVogaNReywekG6MGjOILT2zxUEJno8mBz/jRnD/cVJyES64xD8UgkLdU0+2aIT8V+YTOwnCeng==",
+  "dgSpecHash": "TSV8Fzpbopzx4i+Gdft3jGLSHR59HhwbFuXn3PMcsIfLUoPCzIvmhnQijV5mfZAt53OkRZQMTE/Ifz/Blr/qmA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\REYHAN\\C# PROJECTS\\Project 1\\Intergrated WEB APPS with Webhooks\\SOLUTION2\\SOLUTION\\MovieStreamingService\\MoviesApp\\MoviesApp.csproj",
+  "projectFilePath": "C:\\Users\\REYHAN\\C# PROJECTS\\Project 2\\Intergrated-ASP.NET-MVC-Core-WEB-APPS-\\MovieStreamingService\\MoviesApp\\MoviesApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\REYHAN\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\REYHAN\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.3\\microsoft.entityframeworkcore.7.0.3.nupkg.sha512",
